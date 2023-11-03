@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <head>
+        <title>Calculadora</title>
+        <link rel="stylesheet" href="calculadora.css">
+        <script src="calculadora.js" defer></script>
+    </head>
+    <body>
+        <h1>Calculadora</h1>
+        <input type="number" id="op1">        
+        <input type="number" id="op2">
+        <br/>
+        <br/>
+        <div id="contenedorBotones">
+            <button id="suma" class="operacion">+</button>
+            <button id="resta" class="operacion">-</button>        
+            <button id="multiplicacion" class="operacion">x</button>               
+            <button id="division" class="operacion">/</button>
+            <br/>
+            <div class="doble">
+                <button id="raiz" class="operacion">raiz</button>
+                <button id="potencia" class="operacion">potencia</button>
+                <br/>        
+                <button id="absoluto" class="operacion">absoluto</button>                
+            </div>
+        </div>
+        <h3>Resultado:</h3>
+        <input type="text" id="resultado">
+        <br/>
+        <br/>
+
+    </body>
+</html>
