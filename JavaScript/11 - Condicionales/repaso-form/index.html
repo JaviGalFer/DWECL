@@ -8,16 +8,19 @@
 <body>
     <div class="container">
         <div class="select-container">
-            <label for="puestoTrabajo">Selecciona un puesto de trabajo:</label>
+            <label for="puestoTrabajo">Selecciona un puesto de trabajo</label>
+            <br>
             <select id="puestoTrabajo">
-                <option value="dba job">DBA Job</option>
-                <option value="front-end developer">Front-end Developer</option>
-                <option value="back-end developer">Back-end Developer</option>
+                <option value="default" selected disabled>Selecciona un puesto</option>
+                <option value="project manager">Project Manager</option>
+                <option value="data analyst">Data Analyst</option>
+                <option value="software engineer">Software Engineer</option>
             </select>
         </div>
         <button id="btnSalario">Consultar Salario</button>
-        <div class="result-container">
-            <p id="salarioResultado"></p>
+        <div class="result-container" id="resultContainer">
+            <p id="salarioResultado" style="display: none;"></p>
+            <p id="noInfoMessage" style="display: none; color: #666;">No hay información disponible</p>
         </div>
     </div>
 </body>
