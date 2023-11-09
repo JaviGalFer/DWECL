@@ -5,6 +5,7 @@ const resultado =  document.getElementById("resultado");
 
 const contenedorBotones = document.querySelector("#contenedorBotones");
 
+/*
 const btnSuma =  document.getElementById("suma");
 const btnResta =  document.getElementById("resta");
 const btnMultiplicacion =  document.getElementById("multiplicacion");
@@ -12,7 +13,7 @@ const btnDivision =  document.getElementById("division");
 const btnRaiz =  document.getElementById("raiz");
 const btnPotencia =  document.getElementById("potencia");
 const btnAbsoluto =  document.getElementById("absoluto");
-
+*/
 
 
 
