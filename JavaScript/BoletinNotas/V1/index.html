@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div id="notas-container">
+        <h2>Boletín de Notas</h2>
+
+        <div id="notas-lista-container">
+            <h4 id="hnombre"></h4>
+            <h4 id="hnotas"></h4>
+            <ul id="notas-lista"></ul>
+        </div>
+
+        <div id="resultados-container">
+            <p id="promedio"></p>
+            <p id="nota-mas-alta"></p>
+            <p id="hay-suspensos"></p>
+        </div>
+
+        <div id="acciones-container">
+            <button class="accion-btn" onclick="calcularPromedio()">Calcular Promedio</button>
+            <button class="accion-btn" onclick="calcularNotaMasAlta()">Calcular Nota más alta</button>
+            <button class="accion-btn" onclick="haySuspensos()">Hay algún suspenso</button>
+        </div>
+    </div>
+</body>
+</html>

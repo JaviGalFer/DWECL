@@ -1,0 +1,85 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#notas-container {
+    max-width: 800px;
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+h2 {
+    color: #00bcd4;
+    margin-bottom: 20px;
+}
+
+#botones-container {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #00bcd4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+#notas-lista-container {
+    margin-top: 20px;
+}
+
+#hnombre, #hnotas {
+    color: #00bcd4;
+}
+
+#notas-lista {
+    list-style: none;
+    padding: 0;
+}
+
+#resultados-container {
+    margin-top: 20px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+#acciones-container {
+    margin-top: 20px;
+}
+
+.accion-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #00bcd4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.accion-btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
