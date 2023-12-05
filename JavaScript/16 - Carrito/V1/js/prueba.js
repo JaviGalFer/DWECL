@@ -53,7 +53,7 @@ listaCarrito.addEventListener('click', function (event) {
 
     // Función para renderizar el carrito en la interfaz de usuario
     function renderizarCarrito() {
-        listaCarrito.innerHTML = ''; // Limpiar la lista del carrito
+        listaCarrito.innerHTML = '';
 
         carrito.forEach(curso => {
             const fila = document.createElement('tr');
@@ -81,9 +81,16 @@ listaCarrito.addEventListener('click', function (event) {
 
             // Renderizar las cards en el DOM
             const listaCursos = document.getElementById('lista-cursos');
-            listaCursos.innerHTML = ''; // Limpiar la lista de cursos
+            listaCursos.innerHTML = '';
 
-            cards.forEach(card => {
+            
+            let currentRow;
+            cards.forEach((card, index) => {
+                if (index % 3 === 0) {
+                    currentRow = document.createElement('div');
+                    currentRow.classList.add('row');
+                    listaCursos.appendChild(currentRow);
+                }
                 const cardHTML = `
                     <div class="four columns">
                         <div class="card">
@@ -98,7 +105,10 @@ listaCarrito.addEventListener('click', function (event) {
                         </div>
                     </div>
                 `;
-                listaCursos.innerHTML += cardHTML;
+                const cardElement = document.createElement('div');
+                cardElement.innerHTML = cardHTML.trim();
+                currentRow.appendChild(cardElement.firstChild);
+                // listaCursos.innerHTML += cardHTML;
             });
 
             // Evento para agregar curso al carrito (debe ejecutarse después de renderizar las cards)
