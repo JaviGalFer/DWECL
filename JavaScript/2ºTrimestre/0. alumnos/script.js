@@ -30,6 +30,7 @@ document.addEventListener('keydown', function (e){
     }
 })
 
+//SCROLL SMOOTH
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
@@ -77,3 +78,26 @@ console.log(
 
 );
 
+//PAGE NAVIGATION 
+/*
+document.querySelectorAll('.nav__link').forEach(function (e) {
+    e.addEventListener('click', function (e) {
+        //console.log('LINK');
+        e.preventDefault();
+        const id = getAttribute('href');
+        //No uso this.href porque no quiero direcciones absolutas, sino relativas
+        console.log(id);
+        document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+*/
+
+
+//PAGE NAVIGATION CON DELEGACION
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains('nav__link')) {
+        const id = e.target.getAttribute('href');
+        document.querySelector(id).scrollIntoView({ behavior: 'smooth'});
+    }
+}) ;
