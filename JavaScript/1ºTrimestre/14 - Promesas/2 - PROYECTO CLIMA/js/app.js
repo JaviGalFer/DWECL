@@ -9,7 +9,7 @@ async function obtenerClima() {
     }
 
     // Hacer la solicitud a la API de OpenWeatherMap
-    const apiKey = ''; // Reemplaza con tu clave de API de OpenWeatherMap
+    const apiKey = 'be734975212a9737bd62ec27fc307b7d'; // Reemplaza con tu clave de API de OpenWeatherMap
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${apiKey}`;
 
     try {
