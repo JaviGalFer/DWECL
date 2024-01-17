@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INTERSECTION OBSERVER</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      body {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .box {
+        border: 1px solid black;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .section1 {
+        background-color: green;
+      }
+
+      .section2 {
+        background-color: blue;
+      }
+
+      .section3 {
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box section1">
+      <span>SECCION 1</span><img src="./img/user-1.jpg" data-user="user1" />
+    </div>
+    <div class="box section2">
+      <span>SECCION 2</span><img src="./img/user-2.jpg" data-user="user2" />
+    </div>
+    <div class="box section3">
+      <span>SECCION 3</span><img src="./img/user-3.jpg" data-user="user3" />
+    </div>
+  </body>
+  <script>
+    const section1 = document.querySelector('.section1');
+    const section2 = document.querySelector('.section2');
+    const section3 = document.querySelector('.section3');
+    const imagenes = document.querySelectorAll('img');
+
+    const callback = function (entries) {
+      const intersection_0 = entries[0];
+      console.log(intersection_0.target.querySelector('img').dataset.user);
+      console.log(intersection_0.target.children[1].dataset.user);
+      console.log(intersection_0);
+
+      if(intersection_0.isIntersecting){
+        console.log('Está intersectando');
+        }else{
+          console.log('No está intersectando')
+      }
+    };
+
+    const options = {
+      root: null,
+      threshold: 0.2,
+      //threshold: 0.2 => intersectará cuando entre en el ratio de intersection 0.2 => 1
+      //threshold: 0 => true cuando el ratio sea 0-1
+      //threshold: 1 => true cuando el ratio sea 1
+      //El callback se dispara tanto cuando entra en ese ratio de intersection marcado (true)
+      //como cuando sale de ese ratio de intersection marcado en el threshold (false)
+    };
+    const sectionObserver = new IntersectionObserver(callback, options);
+    /*  sectionObserver.observe(section1);
+    sectionObserver.observe(section2);
+    sectionObserver.observe(section3);
+ */
+
+    sectionObserver.observe(section2);
+    /*
+    imagenes.forEach(function (img) {
+      sectionObserver.observe(img);
+    });*/
+  </script>
+</html>

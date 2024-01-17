@@ -1,13 +1,33 @@
 'use strict';
 
 ///////////////////////////////////////
-// Modal window
+////////////////////////CARGA DOM///////////////////////
 
+// Modal window
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnOpenModal = document.querySelectorAll('.btn--show-modal');
 
+//SCROLL SMOOTH
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+//MENU FADE ANIMATION
+const navMenu = document.querySelector('.nav');
+const navLinks = document.querySelector('.nav__link');
+const navLink = document.querySelectorAll('.nav__link');
+const navLogo = document.querySelector('.nav__logo');
+
+//TABBED COMPONENT
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+
+///////////////////FUNCIONES//////////////////
+
+////////////MODAL WINDOW//////////////
 const openModal = function () {
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
@@ -30,10 +50,7 @@ document.addEventListener('keydown', function (e){
     }
 })
 
-//SCROLL SMOOTH
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-
+////////////SCROLL SMOOTH//////////////
 btnScrollTo.addEventListener('click', function (e) {
     // const btnCoords = e.target.getBoundingClientRect();
     // console.log(btnCoords);
@@ -78,8 +95,10 @@ console.log(
 
 );
 
-//PAGE NAVIGATION 
-/*
+
+
+///////////PAGE NAVIGATION ////////////
+/*/
 document.querySelectorAll('.nav__link').forEach(function (e) {
     e.addEventListener('click', function (e) {
         //console.log('LINK');
@@ -93,7 +112,7 @@ document.querySelectorAll('.nav__link').forEach(function (e) {
 */
 
 
-//PAGE NAVIGATION CON DELEGACION
+//////////PAGE NAVIGATION CON DELEGACION////////////
 document.querySelector('.nav__links').addEventListener('click', function (e) {
     e.preventDefault();
     if (e.target.classList.contains('nav__link')) {
@@ -101,3 +120,55 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
         document.querySelector(id).scrollIntoView({ behavior: 'smooth'});
     }
 }) ;
+
+
+///////////TABBED COMPONENT///////////////
+tabsContainer.addEventListener('click', function (e){
+    const clicked = e.target.closest('.operations__tab');
+    //guard clause
+    if (!clicked) return;
+
+    //Borrando clases activas
+    tabs.forEach(t => t.classList.remove('operations__tab--active'));
+    tabsContent.forEach(c => c.classList.remove('operations__contentn--active'));
+
+    //Añadiendo clases activas
+    clicked.classList.add('operations__tab--active');
+
+    const contenido = document.querySelector(
+        '.operations__content--${clicked.dataset.tab}'
+    );
+    contenido.classList.add('operations__content--active');
+
+});
+
+
+////////////MENU FADE ANIMATION////////
+const handleOver = function (e, opacity){
+    if (e.target.classList.contains('nav__link')) {
+        //console.log(Array.from(navLinks.children));
+        const enlace_actual = e.target;
+
+        navLink.forEach(link =>{
+            if (link !== enlace_actual) {
+                // link.style.opacity = 0.5;
+                link.style.opacity = this;
+            }
+        });
+        // navLogo.style.opacity = 0.5;
+        navLogo.style.opacity = this;
+    }
+};
+
+/*
+navMenu.addEventListener('mouseover', e => {
+    handleOver(e, 0.5);
+});
+
+navMenu.addEventListener('mouseout', function (e){
+    handleOver(e, 1);
+});
+*/
+
+navMenu.addEventListener('mouseover', handleOver.bind(0.5));
+navMenu.addEventListener('mouseout', handleOver.bind(1));
