@@ -1,8 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { App } from './App';
+// import App from './App';
+
+
+export const SKILLS = [
+  {
+    skill: 'Svelte',
+    level: 'beginner',
+    color: '#ff3b00'
+  },
+  {
+    skill: 'JavaScript',
+    level: 'advanced',
+    color: '#efd81d'
+  },
+  {
+    skill: 'HTML + CSS',
+    level: 'advanced',
+    color: '#2662ea'
+  },
+  {
+    skill: 'Web Design',
+    level: 'advanced',
+    color: '#c3dcaf'
+  },
+  {
+    skill: 'Git and Github',
+    level: 'intermediate',
+    color: '#e84f33'
+  },
+  {
+    skill: 'React',
+    level: 'advanced',
+    color: '#60dafb'
+  }
+]
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +45,3 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
