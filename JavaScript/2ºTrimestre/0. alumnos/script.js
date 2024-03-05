@@ -25,6 +25,9 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
 
+
+
+
 ///////////////////FUNCIONES//////////////////
 
 ////////////MODAL WINDOW//////////////
@@ -111,6 +114,98 @@ document.querySelectorAll('.nav__link').forEach(function (e) {
 });
 */
 
+
+//SLIDER COMPONENT
+const sliderContainer = document.querySelector(".slider");
+const slideEltos = document.querySelectorAll(".slide");
+// slideEltos[0] = style.transform = 'translate(0%)';
+// slideEltos[1] = style.transform = 'translate(100%)';
+// slideEltos[2] = style.transform = 'translate(200%)';
+sliderContainer.style.overflow = 'visible';
+let num_desplazamientos = 0;
+let max_desplazamientos = slideEltos.length - 1;
+
+const init = function () {
+    gotoSlide();
+    pintarDot();
+}
+
+init();
+
+const buttonNext = document.querySelector('.slider__btn--right');
+const buttonPrevius = document.querySelector('.slider__btn--left');
+buttonPrevius.addEventListener('click', handlePreviusSlider);
+
+buttonNext.addEventListener('click', handleNextSlider);
+
+
+function activateDot(posSlide){
+    const dotActivado = document.querySelector(
+        '.dots__dot[data-slide="${posSlide}"]'
+    );
+    document.querySelectorAll('.dots__dot').forEach();
+}
+
+slideEltos.forEach(
+    (item, pos) => (item.style.transform = `translate(${pos * 100}%)`)
+)
+
+
+function handleNextSlider() {
+    if (num_desplazamientos === max_desplazamientos){
+        num_desplazamientos = 0;
+    }else {
+        num_desplazamientos++;
+    }
+    num_desplazamientos++;
+    slideEltos.forEach(
+        (item, pos) => 
+            (item.style.transform = `translate(${
+                (pos - num_desplazamientos) * 100
+            }%)`)
+    );
+}
+
+function gotoSlide(numero_desplazamientos){
+    slideEltos.forEach(
+        (item,pos) => (item.style.transform = `translate(${
+            (pos - numero_desplazamientos) * 100
+        }%)`)
+    );
+    activateDot(num_desplazamientos);
+}
+
+
+
+function handlePreviusSlider() {
+    if (num_desplazamientos === 0){
+        num_desplazamientos = max_desplazamientos;
+    }else{
+        num_desplazamientos--;
+    }
+    gotoSlide(num_desplazamientos);
+}
+
+document.addEventListener('keydown', handleKeySlider);
+
+function handleKeySlider(e){
+    if (e.key === 'ArrowLeft'){
+        handlePreviusSlider();
+    }else if (e.key === 'ArrowRight'){
+        handleNextSlider();
+    }
+}
+
+const dotContainer = document.querySelector('.dots');
+
+function pintarDot(){
+    slideEltos.forEach(
+        (item,pos) => 
+        {dotContainer.insertAdjacentHTML(`beforeend`, `<button class="dots__dot" data-slide=${pos}></button>`)
+    });
+}
+
+pintarDot();
 
 //////////PAGE NAVIGATION CON DELEGACION////////////
 document.querySelector('.nav__links').addEventListener('click', function (e) {

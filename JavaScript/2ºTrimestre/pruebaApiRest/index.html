@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./axios.js"></script>
+</head>
+<body>
+    <!-- <script type="module" src="./index.js"> -->
+        <script>
+
+            console.log(axios);
+            let login = {"email": "notengo@gmail.com",
+            "password": "12345"
+            };
+            axios.post('http://localhost/api/login',login)
+            .then(function (res) {
+                console.log(res.data);
+                axios.defaults.headers.common['Authorization'] = res.data.token_type + " " + res.data.acces_token;
+                console.log(axios.defaults.headers.common);
+                // Arreglar en modo promesa para que ejecute primero el login y después el get con await
+                axios.get('http://localhost/api/tareas')
+                    .then(function (res) {
+                console.log(res.data);
+            });
+            });
+
+    </script>
+</body>
+</html>
